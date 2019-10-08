@@ -8,9 +8,9 @@ const App: React.FC = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit
+          Edit&nbsp;
           <code>src/App.tsx</code>
-          and save to reload.
+          &nbsp;and save to reload.
         </p>
         <a
           className="App-link"
