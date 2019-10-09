@@ -1,35 +1,15 @@
-import React, { FC, KeyboardEvent, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-const VALID_FIRST = /^[1-9]{1}$/;
-const VALID_NEXT = /^[0-9]{1}$/;
-const DELETE_KEY_CODE = 8;
+import CurrencyInput from './components/CurrencyInput';
 
 const App: FC = () => {
   const [value, setValue] = useState(0);
-  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLDivElement>): void => {
-    const { key, keyCode } = e;
-    setValue(previousValue => {
-      if (
-        (previousValue === 0 && !VALID_FIRST.test(key)) ||
-        (previousValue !== 0 && !VALID_NEXT.test(key) && keyCode !== DELETE_KEY_CODE)
-      ) {
-        return previousValue;
-      }
-      const previousValueString = previousValue.toString();
-      let nextValue: number;
-      if (keyCode !== DELETE_KEY_CODE) {
-        const nextValueString: string = previousValue === 0 ? key : `${previousValueString}${key}`;
-        nextValue = Number.parseInt(nextValueString, 10);
-      } else {
-        const nextValueString = previousValueString.slice(0, -1);
-        nextValue = nextValueString === '' ? 0 : Number.parseInt(nextValueString, 10);
-      }
-      return nextValue;
-    });
+  const handleValueChange = useCallback(val => {
+    // eslint-disable-next-line
+    console.log(val);
+    setValue(val);
   }, []);
-  const valueDisplay = value / 100;
 
   return (
     <div className="App">
@@ -48,17 +28,12 @@ const App: FC = () => {
         >
           Learn React
         </a>
-        <input
-          onKeyDown={handleKeyDown}
-          inputMode="numeric"
-          style={{
-            textAlign: 'right',
-          }}
-          type="text"
-          value={valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+        <CurrencyInput
+          max={100000000}
+          onValueChange={handleValueChange}
+          style={{ textAlign: 'right' }}
+          value={value}
         />
-        <input />
-        <input />
       </header>
     </div>
   );
