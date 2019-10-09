@@ -50,11 +50,10 @@ const App: FC = () => {
         </a>
         <input
           onKeyDown={handleKeyDown}
-          pattern="/d*"
+          inputMode="numeric"
           type="text"
           value={valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
         />
-        <input pattern="/d*" type="text" />
         <input />
         <input />
       </header>
