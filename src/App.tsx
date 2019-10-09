@@ -51,6 +51,9 @@ const App: FC = () => {
         <input
           onKeyDown={handleKeyDown}
           inputMode="numeric"
+          style={{
+            textAlign: 'right',
+          }}
           type="text"
           value={valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
         />
