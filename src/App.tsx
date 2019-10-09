@@ -54,6 +54,7 @@ const App: FC = () => {
           type="text"
           value={valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
         />
+        <input pattern="/d*" type="text" />
         <input />
         <input />
       </header>
