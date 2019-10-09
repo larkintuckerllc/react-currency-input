@@ -48,9 +48,10 @@ const App: FC = () => {
         >
           Learn React
         </a>
-        <div onKeyDown={handleKeyDown} role="textbox" tabIndex={0}>
-          {valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-        </div>
+        <input
+          onKeyDown={handleKeyDown}
+          value={valueDisplay.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+        />
         <input />
         <input />
       </header>
